@@ -4,11 +4,8 @@
 
 <#import "../pageframe/pageframe.ftlh" as pageframe/>
 <#import "../selectors.ftlh" as selectors/>
-<#include "./tasks-css.ftlh">
 <#import "/spring.ftl" as spring />
-<#include "./task/task-css.ftlh">
-<#include "./task/task-js.ftlh">
-<#include "./task/modal.ftlh">
+
 
 
 <@pageframe.pageframe>
@@ -30,11 +27,15 @@
                     +
                 </button>
             </div>
-            <div ${selectors.tasksWrapper} class="task-wrapper">
-                <#list (tasks.tasks)![] as task>
-                    <#include "task/task.ftl">
-                </#list>
-            </div>
+        <div ${selectors.tasksWrapper} class="task-wrapper">
+            <#list (tasks.tasks)![] as task>
+                <#include "task/task.ftl">
+            </#list>
         </div>
+    </div>
+    <#include "./task/task-js.ftlh">
+    <#include "./task/task-css.ftlh">
+    <#include "./task/modal.ftlh">
+    <#include "./tasks-css.ftlh">
     </div>
 </@pageframe.pageframe>

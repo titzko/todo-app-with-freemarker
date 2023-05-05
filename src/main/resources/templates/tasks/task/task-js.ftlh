@@ -2,6 +2,18 @@
 
 <script>
 
+    $(document).ready(() => {
+        $("#create-task-form").find("input, textarea, select").each((_, input) => {
+            $(input).on("input", checkFormInputs);
+        })
+    })
+
+
+    function checkFormInputs() {
+        const invalidForm = $("#create-task-form").find("input:invalid, textarea:invalid, select:invalid").length > 0;
+        $("#save-task-btn").prop("disabled", invalidForm);
+    }
+
     function toggleCheckbox(element) {
         $(element).parent().find('input[type=checkbox]').click();
     }
@@ -88,6 +100,7 @@
             location.reload();
         } else {
             let data = await response.json();
+            console.log(data)
             //console.log(data.message); <- actual reason why request fails -> maybe in future display somewhere idk
             let errorMsg = "Request to save task failed with a statuscode " +
                 data.status + " - " + data.message;

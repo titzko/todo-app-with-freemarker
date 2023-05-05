@@ -143,4 +143,11 @@
         text-decoration: none;
     }
 
+    button:disabled {
+        cursor: not-allowed;
+        background-color: grey !important;
+        color: white;
+        border: none
+    }
+
 </style>
